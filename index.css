@@ -1,0 +1,143 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transform: rotate(180deg);
+}
+
+.docker-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  border-radius: 10px;
+  border: 1px rgba(255, 255, 255, 0.2) solid;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  justify-content: space-evenly;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  gap: 10px;
+}
+
+.app-block {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.app-block:hover .tooltip {
+  opacity: 1;
+}
+
+.app-active {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: antiquewhite;
+}
+
+.app-block:hover {
+  cursor: pointer;
+}
+
+.app-block:nth-child(odd) {
+  background-color: red;
+}
+
+.app-block:nth-child(even) {
+  background-color: green;
+}
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background-color: rgb(66, 0, 0);
+  z-index: 1;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.content {
+  padding: 20px 30px;
+}
+
+/* App Container Open Animation */
+@keyframes openAnimation {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.app-container.opening {
+  animation: openAnimation 0.2s ease forwards;
+}
+
+/* App Container Closing Animation */
+@keyframes closeAnimation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+.app-container.closing {
+  animation: closeAnimation 0.2s ease forwards;
+}
